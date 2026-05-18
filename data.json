@@ -1,0 +1,23 @@
+{
+  "last_run": "2026-05-17T19:04:12.226892+00:00",
+  "reservoirs": {
+    "lake_powell": {
+      "name": "Lake Powell",
+      "elevation_ft": 3527.99,
+      "pct_full": 47.9,
+      "full_pool_ft": 3700,
+      "dead_pool_ft": 3370,
+      "source_url": "https://www.usbr.gov/uc/water/crsp/cs/gcd.html",
+      "fetched_at": "2026-05-17T19:04:04.893140+00:00"
+    },
+    "lake_mead": {
+      "name": "Lake Mead",
+      "elevation_ft": 1056.32,
+      "pct_full": 48.3,
+      "full_pool_ft": 1229,
+      "dead_pool_ft": 895,
+      "source_url": "https://www.usbr.gov/lc/region/g4000/hourly/mead-elv.html",
+      "fetched_at": "2026-05-17T19:04:12.226220+00:00"
+    }
+  }
+}

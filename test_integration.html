@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integration Test - Data Loading</title>
+<style>
+  body { font-family: monospace; padding: 2rem; background: #f4ede0; }
+  .test { margin: 1rem 0; padding: 1rem; border: 1px solid #333; background: white; }
+  .pass { border-left: 4px solid green; }
+  .fail { border-left: 4px solid red; }
+  .info { color: #666; font-size: 0.9em; }
+  pre { background: #f0f0f0; padding: 0.5rem; overflow-x: auto; }
+</style>
+</head>
+<body>
+<h1>Colorado River Tracker - Data Integration Test</h1>
+
+<div id="results"></div>
+
+<script>
+const results = document.getElementById('results');
+
+function addTest(name, status, details) {
+  const div = document.createElement('div');
+  div.className = `test ${status}`;
+  div.innerHTML = `
+    <strong>${status === 'pass' ? '✓' : '✗'} ${name}</strong>
+    <div class="info">${details}</div>
+  `;
+  results.appendChild(div);
+}
+
+// Test 1: Check if data.json exists
+fetch('data.json')
+  .then(response => {
+    if (!response.ok) throw new Error('data.json not found');
+    return response.json();
+  })
+  .then(data => {
+    addTest('data.json exists and is valid JSON', 'pass',
+      `<pre>${JSON.stringify(data, null, 2)}</pre>`);
+
+    // Test 2: Check structure
+    if (data.reservoirs && data.reservoirs.lake_powell && data.reservoirs.lake_mead) {
+      addTest('data.json has correct structure', 'pass',
+        `Found lake_powell and lake_mead data`);
+
+      // Test 3: Check Powell data
+      const powell = data.reservoirs.lake_powell;
+      if (powell.pct_full && powell.elevation_ft) {
+        addTest('Lake Powell data complete', 'pass',
+          `${powell.pct_full}% full at ${powell.elevation_ft} ft`);
+      } else {
+        addTest('Lake Powell data complete', 'fail',
+          'Missing pct_full or elevation_ft');
+      }
+
+      // Test 4: Check Mead data
+      const mead = data.reservoirs.lake_mead;
+      if (mead.pct_full && mead.elevation_ft) {
+        addTest('Lake Mead data complete', 'pass',
+          `${mead.pct_full}% full at ${mead.elevation_ft} ft`);
+      } else {
+        addTest('Lake Mead data complete', 'fail',
+          'Missing pct_full or elevation_ft');
+      }
+
+      // Test 5: Check timestamp
+      if (data.last_run) {
+        const date = new Date(data.last_run);
+        addTest('Timestamp exists', 'pass',
+          `Last run: ${date.toLocaleString()}`);
+      } else {
+        addTest('Timestamp exists', 'fail',
+          'Missing last_run field');
+      }
+
+    } else {
+      addTest('data.json has correct structure', 'fail',
+        'Missing reservoirs.lake_powell or reservoirs.lake_mead');
+    }
+  })
+  .catch(error => {
+    addTest('data.json exists and is valid JSON', 'fail',
+      `Error: ${error.message}`);
+  });
+
+// Test 6: Test the main HTML file integration
+addTest('Integration instructions', 'info', `
+  <strong>To test the full integration:</strong><br>
+  1. Open <code>colorado-river-tracker.html</code> in a web browser<br>
+  2. Look for the "Live Data" badge in § 01 section header<br>
+  3. Verify Lake Powell shows ~48% (not hardcoded 23%)<br>
+  4. Verify Lake Mead shows ~48% (not hardcoded 30%)<br>
+  5. Check the masthead shows "Updated May 17, 2026"<br>
+  <br>
+  <strong>If data.json is missing:</strong><br>
+  - Badge should show "Cached"<br>
+  - Reservoirs should display hardcoded fallback values (23% / 30%)
+`);
+</script>
+
+</body>
+</html>

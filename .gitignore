@@ -1,0 +1,57 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# Logs (keep small ones, ignore if they grow)
+# Keep scraper/fetch.log for audit trail
+# But ignore if it gets too large
+scraper/fetch.log.old
+*.log.old
+
+# Temp files
+*.tmp
+*.bak
+.cache/
+
+# Don't ignore these important files:
+# !data.json (live reservoir data - part of project)
+# !scraper/fetch.log (audit trail - part of project)

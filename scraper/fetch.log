@@ -1,0 +1,45 @@
+[2026-05-17T18:28:22.871605+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:28:23.503587+00:00] PARSE ERROR for Lake Powell: no elevation found in response
+[2026-05-17T18:28:23.791677+00:00] Lake Mead: 1015.5 ft (36.1% full)
+[2026-05-17T18:28:23.793131+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:28:23.793262+00:00] === done ===
+
+[2026-05-17T18:33:30.460121+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:33:30.707650+00:00] Lake Powell: 3527.99 ft (47.9% full)
+[2026-05-17T18:33:30.924831+00:00] Lake Mead: 1056.32 ft (48.3% full)
+[2026-05-17T18:33:30.925845+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:33:30.925927+00:00] === done ===
+
+[2026-05-17T18:40:35.184888+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:40:35.460061+00:00] Lake Powell: 3527.99 ft (47.9% full) [+0.00 ft from previous]
+[2026-05-17T18:40:35.672529+00:00] Lake Mead: 1056.32 ft (48.3% full) [+0.00 ft from previous]
+[2026-05-17T18:40:35.673764+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:40:35.673840+00:00] === done ===
+
+[2026-05-17T18:40:39.100618+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:40:39.330363+00:00] Lake Powell: 3527.99 ft (47.9% full) [+0.00 ft from previous]
+[2026-05-17T18:41:09.337996+00:00] FETCH ERROR for Lake Mead: HTTPSConnectionPool(host='www.usbr.gov', port=443): Max retries exceeded with url: /lc/region/g4000/hourly/mead-elv.html (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x105bb2250>, 'Connection to www.usbr.gov timed out. (connect timeout=30)'))
+[2026-05-17T18:41:09.339383+00:00] keeping previous data for Lake Mead
+[2026-05-17T18:41:09.339936+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:41:09.340012+00:00] === done ===
+
+[2026-05-17T18:41:28.917209+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:41:58.971496+00:00] FETCH ERROR for Lake Powell: HTTPSConnectionPool(host='www.usbr.gov', port=443): Max retries exceeded with url: /uc/water/crsp/cs/gcd.html (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x103512210>, 'Connection to www.usbr.gov timed out. (connect timeout=30)'))
+[2026-05-17T18:41:58.973178+00:00] keeping previous data for Lake Powell
+[2026-05-17T18:41:59.281283+00:00] WARNING: Lake Mead elevation change of +156.32 ft exceeds ±100 ft threshold (prev: 900.0 ft, new: 1056.32 ft). Possible parsing bug. Writing data anyway for manual review.
+[2026-05-17T18:41:59.283156+00:00] Lake Mead: 1056.32 ft (48.3% full) [+156.32 ft from previous]
+[2026-05-17T18:41:59.290784+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:41:59.291021+00:00] === done ===
+
+[2026-05-17T18:42:08.108741+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T18:42:09.585598+00:00] Lake Powell: 3527.99 ft (47.9% full) [+0.00 ft from previous]
+[2026-05-17T18:42:10.131762+00:00] Lake Mead: 1056.32 ft (48.3% full) [+0.00 ft from previous]
+[2026-05-17T18:42:10.136372+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T18:42:10.138576+00:00] === done ===
+
+[2026-05-17T19:04:02.534694+00:00] === fetch_reservoirs.py starting ===
+[2026-05-17T19:04:04.892827+00:00] Lake Powell: 3527.99 ft (47.9% full) [+0.00 ft from previous]
+[2026-05-17T19:04:12.225910+00:00] Lake Mead: 1056.32 ft (48.3% full) [+0.00 ft from previous]
+[2026-05-17T19:04:12.227562+00:00] wrote /Users/farman/Documents/investigations/colorado_river/data.json
+[2026-05-17T19:04:12.227715+00:00] === done ===
+
