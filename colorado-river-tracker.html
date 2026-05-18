@@ -470,6 +470,14 @@
     margin-bottom: 1rem;
   }
 
+  /* Keep pledge section text dark even when card is open */
+  .state-card.open .state-pledge-section .state-detail-label,
+  .state-card.open .state-pledge-section .state-detail-val,
+  .state-card:hover .state-pledge-section .state-detail-label,
+  .state-card:hover .state-pledge-section .state-detail-val {
+    color: var(--ink) !important;
+  }
+
   .pledged-row {
     display: flex;
     align-items: baseline;
