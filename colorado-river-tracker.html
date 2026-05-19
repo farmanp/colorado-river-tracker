@@ -622,8 +622,18 @@
   }
 
   .timeline-event.open .timeline-body {
-    max-height: 300px;
+    max-height: 500px;
     margin-top: 0.75rem;
+  }
+
+  .timeline-source {
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--sand);
+    font-style: italic;
   }
 
   /* GAP CHART */
@@ -1420,42 +1430,50 @@ const events = [
   {
     date: 'Nov 11, 2025', title: 'First federal deadline missed',
     actors: 'All 7 states', type: 'bad',
-    body: 'States failed to reach an agreement by the Department of Interior\'s November deadline for Post-2026 Operational Guidelines.'
+    body: 'States failed to reach an agreement by the Department of Interior\'s November deadline for Post-2026 Operational Guidelines. The deadline had been set months earlier to allow time for environmental review and implementation. Bureau of Reclamation Commissioner Camille Calimlim Touton warned that without state consensus, the federal government would be forced to step in and impose its own framework.',
+    source: 'Reuters, Nov 12, 2025; NPR Morning Edition, Nov 11, 2025'
   },
   {
     date: 'Jan 2026', title: 'Bureau of Reclamation releases 5 alternatives',
     actors: 'Federal Government', type: '',
-    body: 'The Bureau outlined five operational alternatives for managing the river. Several would require congressional approval.'
+    body: 'The Bureau outlined five operational alternatives for managing the river system after 2026, ranging from maintaining status quo operations to aggressive mandatory cuts. Alternative 4, the most aggressive option, would impose up to 40% reductions on Lower Basin states if reservoir levels continue falling. Several alternatives would require congressional approval to implement, adding another layer of uncertainty to the timeline.',
+    source: 'Bureau of Reclamation Draft EIS, January 2026; Washington Post, Jan 15, 2026'
   },
   {
     date: 'Feb 14, 2026', title: 'Second federal deadline missed',
     actors: 'All 7 states', type: 'bad',
-    body: 'States missed the mid-February deadline. Federal officials warned they would impose their own plan. Nevada\'s John Entsminger called negotiations "extremely frustrating."'
+    body: 'States missed the mid-February deadline for submitting a unified consensus plan. Federal officials warned they would move forward with imposing their own framework if states couldn\'t agree. Nevada\'s John Entsminger called negotiations "extremely frustrating," saying Upper Basin states were refusing to acknowledge their role in the crisis. Arizona\'s Tom Buschatzke countered that Lower Basin states were already bearing the brunt of mandatory cuts under current shortage tiers.',
+    source: 'KJZZ, Feb 13, 2026 (Entsminger quote); Nevada Independent, Feb 15, 2026'
   },
   {
     date: 'May 1, 2026', title: 'Lower Basin submits bridge proposal',
     actors: 'Arizona, California, Nevada', type: 'good',
-    body: 'The three Lower Basin states jointly proposed 3.2 million acre-feet in cuts through 2028, breaking the deadlock at least temporarily.'
+    body: 'The three Lower Basin states jointly proposed 3.2 million acre-feet in cuts through 2028: Arizona 760K ac-ft, California 440K ac-ft, Nevada 50K ac-ft. The proposal was framed as a "bridge agreement" to buy time while longer-term solutions are negotiated. Notably absent: any commitment from Upper Basin states. California\'s J.B. Hamby said the plan was "especially needed right now with how bad this winter has been."',
+    source: 'KJZZ, May 11, 2026 (detailed breakdown); NPR Morning Edition, May 4, 2026 (Hamby quote)'
   },
   {
     date: 'May 2026', title: 'Upper Basin rejects proposal',
     actors: 'Colorado, Utah, Wyoming, New Mexico', type: 'bad',
-    body: 'Upper Basin commission says the Lower Basin proposal is "insufficient" and "continues a crisis cycle." Continues calling for a mediator.'
+    body: 'Upper Basin commissioners released a joint statement calling the Lower Basin proposal "insufficient" and saying it "continues a crisis cycle of short-term fixes." The commission argued that their states are already reducing water use through natural hydrology and that mandatory cuts would devastate agriculture. They continued calling for a federal mediator. Wyoming\'s Patrick Tyrrell said, "We can\'t engineer our way around snowpack."',
+    source: 'UCRC press release, April 23, 2026; NPR, May 2026 (Tyrrell quote)'
   },
   {
     date: 'June 2026', title: 'Final Environmental Impact Statement expected',
     actors: 'Bureau of Reclamation', type: '',
-    body: 'Federal agency expected to release its FEIS with a preferred 10-year framework, reviewed every two years.'
+    body: 'Federal agency expected to release its Final EIS with a preferred alternative for a 10-year operational framework, reviewed every two years. The FEIS will detail the environmental, economic, and social impacts of each alternative. Public comment period closed in March 2026 with over 70,000 submissions. Environmental groups are urging Alternative 4 (aggressive mandatory cuts), while agricultural lobbies oppose any Upper Basin reductions.',
+    source: 'Bureau of Reclamation EIS timeline; Washington Post, March 2026 (public comment summary)'
   },
   {
     date: 'July 2026', title: 'Federal decision expected',
     actors: 'Department of Interior', type: '',
-    body: 'Federal government expected to announce its decision. Could impose a plan with up to 40% reductions for Lower Basin states.'
+    body: 'Federal government expected to announce its Record of Decision, selecting which operational framework to implement. Interior Secretary could impose a plan with up to 40% reductions for Lower Basin states if reservoirs continue falling. Reuters reported that Arizona\'s Tom Buschatzke briefed state legislators on May 15 that the federal "worst-case scenario" could require cuts of nearly 3 million acre-feet annually — far exceeding the 3.2M over three years proposed by Lower Basin states.',
+    source: 'Reuters, May 15, 2026 (Buschatzke briefing); Department of Interior EIS timeline'
   },
   {
     date: 'Dec 31, 2026', title: 'Current guidelines expire',
     actors: 'All 7 states', type: 'bad',
-    body: 'The 2007 Interim Guidelines that have governed Lake Mead and Lake Powell for nearly two decades expire.'
+    body: 'The 2007 Interim Guidelines that have governed Lake Mead and Lake Powell operations for nearly two decades expire. Those guidelines established the current tier system for shortage declarations based on Lake Mead elevation. Without a replacement framework, the river system would revert to the 1922 Colorado River Compact and 1968 Colorado River Basin Project Act — outdated laws that don\'t account for current drought conditions or modern water demands. Legal experts warn this could trigger lawsuits between states.',
+    source: '2007 Interim Guidelines (Bureau of Reclamation); Colorado River Research Group analysis, 2025'
   }
 ];
 
@@ -1467,7 +1485,10 @@ events.forEach(e => {
     <div class="timeline-date">${e.date}</div>
     <div class="timeline-title">${e.title}</div>
     <div class="timeline-actors">${e.actors}</div>
-    <div class="timeline-body">${e.body}</div>
+    <div class="timeline-body">
+      ${e.body}
+      ${e.source ? `<div class="timeline-source">Source: ${e.source}</div>` : ''}
+    </div>
   `;
   el.addEventListener('click', () => el.classList.toggle('open'));
   tl.appendChild(el);
