@@ -261,10 +261,41 @@
     overflow: hidden;
   }
 
+  .reservoir-scale {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    border-right: 1px solid var(--ink-soft);
+    background: var(--bg-deep);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .scale-tick {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ink-soft);
+    opacity: 0.4;
+  }
+
+  .scale-label {
+    position: absolute;
+    right: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--ink-soft);
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
   .water-fill {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50px;
     right: 0;
     background: linear-gradient(180deg, var(--water) 0%, var(--water-deep) 100%);
     transition: height 1.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -306,7 +337,7 @@
 
   .marker {
     position: absolute;
-    left: 0;
+    left: 50px;
     right: 0;
     border-top: 1px dashed var(--rust);
     pointer-events: none;
@@ -1000,6 +1031,18 @@
         <div class="reservoir-meta">Upper Basin · Arizona/Utah border</div>
         <div class="reservoir-viz" id="powell-viz">
           <!-- CLAIM: Lake Powell at 23% capacity, ~3,526 ft elevation | TIER 1 — VERIFIED | SOURCE: USBR April 2026 24-Month Study + DesertUSA cross-ref May 2026 | URL: https://www.usbr.gov/uc/water/crsp/cs/gcd.html -->
+          <div class="reservoir-scale">
+            <div class="scale-tick" style="top: 0;"></div>
+            <div class="scale-label" style="top: 0;">3700</div>
+            <div class="scale-tick" style="top: 25%;"></div>
+            <div class="scale-label" style="top: 25%;">3618</div>
+            <div class="scale-tick" style="top: 50%;"></div>
+            <div class="scale-label" style="top: 50%;">3535</div>
+            <div class="scale-tick" style="top: 75%;"></div>
+            <div class="scale-label" style="top: 75%;">3453</div>
+            <div class="scale-tick" style="bottom: 0;"></div>
+            <div class="scale-label" style="bottom: 0;">3370</div>
+          </div>
           <div class="water-fill" id="powell-fill" style="height: 23%;">
             <div class="water-fill-label" id="powell-pct">23%</div>
             <div class="water-fill-sub" id="powell-elev">~3,526 ft · May 2026</div>
@@ -1015,6 +1058,18 @@
         <div class="reservoir-meta">Lower Basin · Nevada/Arizona border</div>
         <div class="reservoir-viz" id="mead-viz">
           <!-- CLAIM: Lake Mead at 30% capacity, ~1,055 ft elevation | TIER 1 — VERIFIED | SOURCE: USBR April 2026 24-Month Study projects Dec 31, 2026 elevation at 1,054-1,063 ft; DesertUSA May 2026 cross-ref -->
+          <div class="reservoir-scale">
+            <div class="scale-tick" style="top: 0;"></div>
+            <div class="scale-label" style="top: 0;">1229</div>
+            <div class="scale-tick" style="top: 25%;"></div>
+            <div class="scale-label" style="top: 25%;">1146</div>
+            <div class="scale-tick" style="top: 50%;"></div>
+            <div class="scale-label" style="top: 50%;">1062</div>
+            <div class="scale-tick" style="top: 75%;"></div>
+            <div class="scale-label" style="top: 75%;">979</div>
+            <div class="scale-tick" style="bottom: 0;"></div>
+            <div class="scale-label" style="bottom: 0;">895</div>
+          </div>
           <div class="water-fill" id="mead-fill" style="height: 30%;">
             <div class="water-fill-label" id="mead-pct">30%</div>
             <div class="water-fill-sub" id="mead-elev">~1,055 ft · May 2026</div>
